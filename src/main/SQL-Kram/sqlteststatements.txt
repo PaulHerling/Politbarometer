@@ -1,0 +1,61 @@
+CREATE TABLE `politbarometer`.`kategorie` (
+  
+`kategorie_id` INT NOT NULL,
+ 
+`kategoriename` VARCHAR(45) NULL,
+  
+PRIMARY KEY (`kategorie_id`));
+
+
+CREATE TABLE fragen(
+
+fragen_id int NOT NULL,
+
+fragentext VARCHAR (300),
+
+kat_id int,
+
+PRIMARY KEY (fragen_id),
+
+FOREIGN KEY (kat_id) REFERENCES kategorie(kategorie_id)
+);
+
+CREATE TABLE partei (
+  
+partei_id INT NOT NULL,
+ 
+parteiname VARCHAR(45) NULL,
+ 
+ausrichtung VARCHAR(45),
+PRIMARY KEY (`partei_id`));
+
+
+CREATE TABLE politiker(
+
+politiker_id int NOT NULL,
+
+politiker_vorname VARCHAR (45),
+politiker_nachname VARCHAR (45),
+
+part_id int,
+
+PRIMARY KEY (politiker_id),
+
+FOREIGN KEY (part_id) REFERENCES partei(partei_id)
+);
+
+CREATE TABLE eintrag(
+
+eintrag_id int NOT NULL,
+
+fragentext VARCHAR (300),
+
+kat_id int,
+
+PRIMARY KEY (fragen_id),
+
+FOREIGN KEY (kat_id) REFERENCES kategorie(kategorie_id)
+);
+
+INSERT INTO fragen (fragen_id, fragentext) VALUES (1, Wer hat Ihrer Meinung nach die realitätsnächste Antwort zu einem Integrationskonzept?)
+INSERT INTO politiker (politiker_id, politiker_vorname, politiker_nachname) VALUES (1, Cem, Oezdemir);
